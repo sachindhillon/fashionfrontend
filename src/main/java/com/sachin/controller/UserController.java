@@ -43,7 +43,8 @@ public class UserController
 			{
 				mv = new ModelAndView("home");
 				String name = u.getName();
-				httpSession.setAttribute("username", "Welcome"+name);
+				httpSession.setAttribute("username", "Welcome"+" "+name);
+				httpSession.setAttribute("loggedIn", true);
 				mv.addObject("isUseraAdmin", true);
 			}
 			
@@ -51,6 +52,9 @@ public class UserController
 			{
 				
 				mv = new ModelAndView("home");
+				String name = u.getName();
+				httpSession.setAttribute("loggedIn", true);
+				httpSession.setAttribute("username", "Welcome"+" "+name);
 				mv.addObject("isCustomer",true);
 			}
 			

@@ -61,7 +61,7 @@ public class ProductsManageController {
 		return mv;
 
 	}
-@RequestMapping(value="/manageProducts" )
+@RequestMapping(value="/manageProducts",method=RequestMethod.POST )
 public ModelAndView manageProducts()
 {
 	List<Supplier>supplier=supplierDAO.list();
@@ -80,7 +80,7 @@ public ModelAndView manageProducts()
 }
 
 
-@RequestMapping(value="/deleteProducts")
+@RequestMapping(value="/deleteProducts",method=RequestMethod.POST)
 public ModelAndView deleteProduct(@RequestParam String id ) {
 	boolean u=productDAO.delete(id);
 	ModelAndView mv = new ModelAndView("redirect:/manageProducts");
@@ -99,7 +99,7 @@ public ModelAndView deleteProduct(@RequestParam String id ) {
 	return mv;
 
 }
-@RequestMapping("/updateProducts")
+@RequestMapping(value="/updateProducts",method=RequestMethod.POST)
 public ModelAndView updateProducts(@RequestParam String id)
 {
 	Product updateproduct=productDAO.get(id);

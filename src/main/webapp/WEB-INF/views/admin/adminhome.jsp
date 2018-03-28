@@ -38,19 +38,20 @@ color:indigo;
 	<div class="container">
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="#" data-toggle="tab">Home</a></li>
+			<li class="active"><a href="#adminhome" data-toggle="tab">Home</a></li>
 			<li><a href="#manageCategories" data-toggle="tab">ManageCategory</a></li>
 			<li><a href="#manageSuppliers" data-toggle="tab">ManageSuppliers</a></li>
 			<li><a href="#manageProducts" data-toggle="tab">ManageProducts</a></li>
 		</ul>
 		
-	<div id="#" class="tab-pane fade in active">
+	
+
+		<div class="tab-content">
+		<div id="adminhome" class="tab-pane fade in active">
 				<h3>Home</h3>
 				
 				
 			</div>
-
-		<div class="tab-content">
 		<div id="manageCategories" class="tab-pane fade">
 				<h3>Manage Categories</h3>
 				<jsp:include page="managecategory.jsp"></jsp:include>

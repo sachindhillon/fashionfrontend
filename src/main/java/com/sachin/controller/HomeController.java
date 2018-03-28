@@ -42,15 +42,19 @@ public class HomeController {
 		List<Product>products=productDAO.list();
 		httpSession.setAttribute("products", products);
 		
+		httpSession.setAttribute("loggedIn", null);
 		ModelAndView mv = new ModelAndView("home");
 		return mv;
 	}
 	
 	@RequestMapping(value="/homePage")
 	public ModelAndView homePage()
-	{
+	{	
+		ModelAndView mv = new ModelAndView("home");
+		List<Category>categories=categoryDAO.list();
+		httpSession.setAttribute("categories", categories);
 		
-		ModelAndView mv = new ModelAndView("redirect:/");
+	
 		return mv;
 	}
 
@@ -84,6 +88,18 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin/adminhome");
 		mv.addObject("isUserClickedHomeTab", true);
+		return mv;
+		
+	}
+	
+	@RequestMapping(value="/logoutUser")
+	public ModelAndView logout()
+	{
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/homePage");
+		httpSession.setAttribute("loggedIn", null);
+		mv.addObject("isUserClickedLogout", true);
 		return mv;
 		
 	}

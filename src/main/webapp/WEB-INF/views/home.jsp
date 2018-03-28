@@ -41,7 +41,7 @@
 
 
 ${invalid}
-${username}
+
 ${failmsg}
 ${register} 
 ${category}

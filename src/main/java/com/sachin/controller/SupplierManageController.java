@@ -45,7 +45,7 @@ public class SupplierManageController {
 		return mv;
 
 	}
-	@RequestMapping(value="/manageSuppliers")
+	@RequestMapping(value="/manageSuppliers",method=RequestMethod.POST)
 	public ModelAndView manageSuppliers()
 	{
 		List<Supplier>supplier=supplierDAO.list();
@@ -55,7 +55,7 @@ public class SupplierManageController {
 		return mv;
 		
 	}
-	@RequestMapping(value="/deleteSupplier")
+	@RequestMapping(value="/deleteSupplier",method=RequestMethod.POST)
 	public ModelAndView deleteCategory(@RequestParam String id ) {
 		boolean u=supplierDAO.delete(id);
 		ModelAndView mv = new ModelAndView("redirect:/manageSuppliers");
@@ -74,7 +74,7 @@ public class SupplierManageController {
 		return mv;
 
 	}
-	@RequestMapping("/updateSupplier")
+	@RequestMapping(value="/updateSupplier",method=RequestMethod.POST)
 	public ModelAndView updateSuppliers(@RequestParam String id)
 	{
 		Supplier updateSupplier=supplierDAO.get(id);

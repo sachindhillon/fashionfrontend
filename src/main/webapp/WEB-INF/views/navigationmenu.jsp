@@ -29,10 +29,20 @@
      </c:forEach>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <c:if test='<%=(Boolean)session.getAttribute("loggedIn")!=null&&(Boolean)session.getAttribute("loggedIn")==true %>'>
+       <li><a><%=session.getAttribute("username") %></a></li>
+     	<%-- <li><a href="<c:url value="/perform_logout"/>">LOGOUT</a></li> --%>
+     	<li><a href="logoutUser"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+     </c:if>
+     
+     <c:if test='<%=(Boolean)session.getAttribute("loggedIn")==null%>'>
+      	<li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      	<li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+     </c:if>
     </ul>
   </div>
 </nav>
+
+
 </body>
 </html>

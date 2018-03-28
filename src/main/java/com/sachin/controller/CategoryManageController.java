@@ -47,7 +47,7 @@ public class CategoryManageController
 
 	}
 
-@RequestMapping("/deleteCategory")
+@RequestMapping(value="/deleteCategory" ,method=RequestMethod.POST)
 public ModelAndView deleteCategory(@RequestParam String id ) {
 	boolean u=categoryDAO.delete(id);
 	ModelAndView mv = new ModelAndView("redirect:/manageCategories");
@@ -67,7 +67,7 @@ public ModelAndView deleteCategory(@RequestParam String id ) {
 
 }
 
-@RequestMapping(value="/manageCategories",method=RequestMethod.GET)
+@RequestMapping(value="/manageCategories")
 public ModelAndView manageCategories()
 {
 	List<Category>categories=categoryDAO.list();
