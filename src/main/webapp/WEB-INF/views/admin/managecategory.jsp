@@ -28,7 +28,7 @@ color:indigo;
 }
 </style>
 </head>
-<body style="margin:0;padding:0;">
+<body>
 <div class="container">
 <form action="saveCategory" method="post">
 <table class="table table-bordered">

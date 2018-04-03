@@ -45,17 +45,19 @@ public class SupplierManageController {
 		return mv;
 
 	}
-	@RequestMapping(value="/manageSuppliers",method=RequestMethod.POST)
+	@RequestMapping(value="/manageSuppliers")
 	public ModelAndView manageSuppliers()
 	{
 		List<Supplier>supplier=supplierDAO.list();
 		httpSession.setAttribute("supplier", supplier);
+		
+		
 		ModelAndView mv = new ModelAndView("home");
 		mv.addObject("isAdminClickedManageSuppliers", true);
 		return mv;
 		
 	}
-	@RequestMapping(value="/deleteSupplier",method=RequestMethod.POST)
+	@RequestMapping(value="/deleteSupplier")
 	public ModelAndView deleteCategory(@RequestParam String id ) {
 		boolean u=supplierDAO.delete(id);
 		ModelAndView mv = new ModelAndView("redirect:/manageSuppliers");
@@ -74,7 +76,7 @@ public class SupplierManageController {
 		return mv;
 
 	}
-	@RequestMapping(value="/updateSupplier",method=RequestMethod.POST)
+	@RequestMapping(value="/updateSupplier")
 	public ModelAndView updateSuppliers(@RequestParam String id)
 	{
 		Supplier updateSupplier=supplierDAO.get(id);

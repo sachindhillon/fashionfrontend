@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sachin.dao.CategoryDAO;
@@ -30,20 +29,23 @@ public class HomeController {
 	@Autowired
 	private ProductDAO productDAO;
 	
+	
 	@RequestMapping(value="/")
 	public ModelAndView home()
 	{
-		List<Supplier>supplier=supplierDAO.list();
-		httpSession.setAttribute("supplier", supplier);
-		
 		List<Category>categories=categoryDAO.list();
 		httpSession.setAttribute("categories", categories);
 		
 		List<Product>products=productDAO.list();
 		httpSession.setAttribute("products", products);
 		
+		List<Supplier>supplier=supplierDAO.list();
+		httpSession.setAttribute("supplier", supplier);
+		
+		
 		httpSession.setAttribute("loggedIn", null);
 		ModelAndView mv = new ModelAndView("home");
+		
 		return mv;
 	}
 	
@@ -86,7 +88,7 @@ public class HomeController {
 	{
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/adminhome");
+		mv.setViewName("home");
 		mv.addObject("isUserClickedHomeTab", true);
 		return mv;
 		

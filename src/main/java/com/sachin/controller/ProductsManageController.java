@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sachin.dao.CategoryDAO;
@@ -17,6 +18,7 @@ import com.sachin.dao.SupplierDAO;
 import com.sachin.domain.Category;
 import com.sachin.domain.Product;
 import com.sachin.domain.Supplier;
+import com.sachin.utility.FileUtil;
 
 @Controller
 public class ProductsManageController {
@@ -37,7 +39,8 @@ public class ProductsManageController {
 			@RequestParam("pdescription") String pdescription,
 			@RequestParam("price") String price,
 			@RequestParam("category") String categoryId ,
-			@RequestParam("supplier") String supplierId) {
+			@RequestParam("supplier") String supplierId,
+			@RequestParam("file")MultipartFile file) {
 		product.setPid(pid);
 		product.setPname(pname);
 		product.setPdescription(pdescription);
@@ -45,13 +48,23 @@ public class ProductsManageController {
 		product.setCategoryID(categoryId);
 		product.setSupplierID(supplierId);
 		
-		boolean u=productDAO.save(product);
+	
 
 		ModelAndView mv = new ModelAndView("redirect:/manageProducts");
 		httpSession.setAttribute("isAdminClickedSaveProducts", true);
-		if(u)
+		if(productDAO.save(product))
 		{
 			mv.addObject("product", "Product saved successfully");
+			
+			if(FileUtil.fileCopyFashion(file, pid+".png"))
+			{
+				mv.addObject("uploadMessage", "image uploaded successfully");
+			}
+			else
+			{
+				mv.addObject("uploadMessage", "image not uploaded ");
+			}
+			
 		}
 		else
 		{
@@ -61,7 +74,7 @@ public class ProductsManageController {
 		return mv;
 
 	}
-@RequestMapping(value="/manageProducts",method=RequestMethod.POST )
+@RequestMapping(value="/manageProducts")
 public ModelAndView manageProducts()
 {
 	List<Supplier>supplier=supplierDAO.list();
@@ -73,6 +86,8 @@ public ModelAndView manageProducts()
 	List<Product>products=productDAO.list();
 	httpSession.setAttribute("products", products);
 	
+	
+	
 	ModelAndView mv = new ModelAndView("home");
 	mv.addObject("isAdminClickedManageProducts", true);
 	return mv;
@@ -80,7 +95,7 @@ public ModelAndView manageProducts()
 }
 
 
-@RequestMapping(value="/deleteProducts",method=RequestMethod.POST)
+@RequestMapping(value="/deleteProducts")
 public ModelAndView deleteProduct(@RequestParam String id ) {
 	boolean u=productDAO.delete(id);
 	ModelAndView mv = new ModelAndView("redirect:/manageProducts");
@@ -99,13 +114,25 @@ public ModelAndView deleteProduct(@RequestParam String id ) {
 	return mv;
 
 }
-@RequestMapping(value="/updateProducts",method=RequestMethod.POST)
+@RequestMapping(value="/updateProducts")
 public ModelAndView updateProducts(@RequestParam String id)
 {
 	Product updateproduct=productDAO.get(id);
 	ModelAndView mv=new ModelAndView("redirect:/manageProducts");
     mv.addObject("isAdminClickedEdit", true);
 	httpSession.setAttribute("updateproduct", updateproduct);
+	return mv;
+}
+
+
+@RequestMapping(name = "/get/product", method = RequestMethod.GET)
+public ModelAndView getProduct(@RequestParam String id) {
+	// based on id, fetch the details from productDAO
+	product = productDAO.get(id);
+	// navigate to home page
+	ModelAndView mv = new ModelAndView("home");
+	mv.addObject("selectedproduct", product);
+	mv.addObject("isUserSelectedProduct", true);
 	return mv;
 }
 

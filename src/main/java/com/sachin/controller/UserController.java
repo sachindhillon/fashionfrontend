@@ -39,6 +39,7 @@ public class UserController
 		}
 		else
 		{
+			httpSession.setAttribute("loggedInUserId", u.getEmailid());
 			if(u.getRole()=='a' || u.getRole()=='A')
 			{
 				mv = new ModelAndView("home");
