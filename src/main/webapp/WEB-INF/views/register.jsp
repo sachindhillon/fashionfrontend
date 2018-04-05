@@ -17,12 +17,12 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body style="margin-top: 50px">
+<body>
 
 
-<div class="container"> 
-	<div id="signupbox" style=" margin-top: 50px;"
-		class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+<div class="container"  style="padding:0px 300px;"> 
+	<div id="signupbox">
+		<class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<div class="panel-title">Sign Up</div>

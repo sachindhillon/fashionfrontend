@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sachin.dao.CartDAO;
 import com.sachin.dao.UserDAO;
 import com.sachin.domain.User;
 
@@ -17,6 +18,8 @@ public class UserController
 {
 	@Autowired
 	private UserDAO userDAO;
+	
+	
 	
 	@Autowired
 	private User user;
@@ -39,7 +42,8 @@ public class UserController
 		}
 		else
 		{
-			httpSession.setAttribute("loggedInUserId", u.getEmailid());
+			httpSession.setAttribute("loggedInUserId", (String)u.getEmailid());
+			
 			if(u.getRole()=='a' || u.getRole()=='A')
 			{
 				mv = new ModelAndView("home");
@@ -47,6 +51,8 @@ public class UserController
 				httpSession.setAttribute("username", "Welcome"+" "+name);
 				httpSession.setAttribute("loggedIn", true);
 				mv.addObject("isUseraAdmin", true);
+				
+			
 			}
 			
 			else 
@@ -57,6 +63,11 @@ public class UserController
 				httpSession.setAttribute("loggedIn", true);
 				httpSession.setAttribute("username", "Welcome"+" "+name);
 				mv.addObject("isCustomer",true);
+				
+				/*httpSession.setAttribute("loggedInUserId", u.getEmailid());
+				List<Cart> cartList = cartDAO.list((String)httpSession.getAttribute("loggedInUserID"));
+				httpSession.setAttribute("cartList", cartList);
+				 httpSession.setAttribute("carts", cartList.size());*/
 			}
 			
 		}

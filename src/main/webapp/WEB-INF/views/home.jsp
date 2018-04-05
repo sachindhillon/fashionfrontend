@@ -18,13 +18,14 @@
 	</head>
   
 	<body>
-	
-<jsp:include page="navigationmenu.jsp"></jsp:include>
+	<div>
+<%@ include file="./navigationmenu.jsp"%>
+</div>
+<br><br><br><br><br><br>
 
+<div>
 ${uploadMessage}
-<c:if test="${isUserSelectedProduct==true}">
-	<jsp:include page="cartproducts.jsp"></jsp:include>
-	</c:if>
+
 	<c:if test="${isUserClickedLogin==true}">
 <jsp:include page="login.jsp"></jsp:include>
 
@@ -50,12 +51,21 @@ ${uploadMessage}
 <jsp:include page="admin/adminhome.jsp"></jsp:include>
 </c:if>
 
+<c:if test="${isUserSelectedProduct==true}">
+<jsp:include page="productfile.jsp"></jsp:include>
+</c:if>
+
+<c:if test="${isUserClickedMyCart==true}">
+<jsp:include page="admin/cart.jsp"></jsp:include>
+</c:if>
 
 ${invalid}
-
+${successMessage}
+${errorMessage}
 ${failmsg}
 ${register} 
 ${category}
+</div>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,8 +9,11 @@
 </head>
 <body>
 
-${selectedproduct.pname}
-${selectedproduct.price}
-<img alt="hello no image" src="${imageFolder}/${selectedproduct}.png">
+	<c:forEach var="cart" items="${cartList}">
+ 
++<img alt="" src=" ${ImagesFolder}${cart.productID}.PNG">
+ 
+ Name  : <input type="text" name="price" value="${cart.productName}"> <br>
+ </c:forEach>
 </body>
 </html>

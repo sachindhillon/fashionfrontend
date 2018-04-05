@@ -12,12 +12,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
   </head>
-  <body style="margin-top:50px">
+  <body>
   
   
   
     <div class="container">    
-        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-info" >
                     <div class="panel-heading">
                         <div class="panel-title">Sign In</div>
@@ -80,61 +80,7 @@
                     </div>  
         </div>
         </div>
-  
-  
-  
-  
-  
-  
-  
-  
-<!-- <style>
-input[type="text"], input[type="password"], input[type="submit"] {
-width:100%;
-box-sizing:border-box;
-}
-</style>
-</head>
-<body style="margin-top:50px">
-
-
-<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-heading">
-				<h2 class="text-center">Login</h2>
-			</div>
-			<hr />
-			<div class="modal-body">
-				<form action="loginUser" role="form" method="post" id="login_form">
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon">
-							<span class="glyphicon glyphicon-user"></span>
-							</span>
-							<input type="text" class="form-control" name="username" placeholder="User Name" required/>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon">
-							<span class="glyphicon glyphicon-lock"></span>
-							</span>
-							<input type="password" class="form-control" name="password" placeholder="Password" required/>
-
-						</div>
-
-					</div>
-
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary">Sign In</button>
-						<a href="#" class="btn btn-warning">forget Password</a>
-					</div>
-
-				</form>
-			</div>
-		</div>
-	</div>
- -->
+ 
 	${Message}
 </body>
 </html>

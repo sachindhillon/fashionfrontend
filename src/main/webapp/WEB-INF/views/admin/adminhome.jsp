@@ -17,14 +17,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-
 </head>
-<body style="margin-top:100px">
+<body>
 
 
 
 
-	<div class="container">
+	<%-- <div class="container">
 
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#adminhome" data-toggle="tab">Home</a></li>
@@ -61,13 +60,13 @@
 			</div>
 			
 			
-			
+			 --%>
 			
 			
 		<!-- 	<div id="home" class="tab-pane fade in active">
 				<h3>Home</h3> -->
-				<%--  <p>--%>
-				<%--  <center>
+				 <p>
+				 <center>
 
 <table class="table table-bordered">
 
@@ -86,20 +85,20 @@
 </td></tr>
 </table>
 </center>
-</p> --%>
+</p>
 
-				<%-- <c:if test="${isAdminClickedManageCategories==true }">
+				<c:if test="${isAdminClickedManageCategories==true }">
 					<jsp:include page="managecategory.jsp"></jsp:include>
 				</c:if>
 
 				<c:if test="${isAdminClickedManageSuppliers==true }">
-					<jsp:include page="managecategory.jsp"></jsp:include>
+					<jsp:include page="managesupplier.jsp"></jsp:include>
 				</c:if>
 
 				<c:if test="${isAdminClickedManageProducts==true }">
-					<jsp:include page="managecategory.jsp"></jsp:include>
+					<jsp:include page="manageproducts.jsp"></jsp:include>
 				</c:if>
-			</div> --%>
+			</div>
 			
 			
 			
