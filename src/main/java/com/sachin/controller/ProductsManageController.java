@@ -1,9 +1,12 @@
 package com.sachin.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +34,13 @@ public class ProductsManageController {
 	@Autowired
 	private CategoryDAO categoryDAO;
 	@Autowired
+	private FileUtil fileUtil;
+	@Autowired
 	private SupplierDAO supplierDAO;
 	
+private static final Logger logger=LoggerFactory.getLogger(FileUtil.class);
+	
+private static String rootPath="C:\\Users\\Muskan Rana\\eclipse-workspace\\fashionfront\\src\\main\\webapp\\resources\\images";
 
 	@RequestMapping(value = "/saveProducts", method = RequestMethod.POST)
 	public ModelAndView saveProduct(@RequestParam("pid") String pid, @RequestParam("pname") String pname,
@@ -51,7 +59,7 @@ public class ProductsManageController {
 		if (productDAO.save(product)) {
 			mv.addObject("product", "Product saved successfully");
 
-			if (FileUtil.fileCopyFashion(file, pid + ".png")) {
+			if (fileUtil.fileCopyFashion(file, pid + ".png")) {
 				mv.addObject("uploadMessage", "image uploaded successfully");
 			} else {
 				mv.addObject("uploadMessage", "image not uploaded ");
@@ -116,6 +124,7 @@ public class ProductsManageController {
 		// navigate to home page
 		ModelAndView mv = new ModelAndView("home");
 		mv.addObject("selectedproduct", products);
+		
 		mv.addObject("isUserSelectedProduct", true);
 		
 		return mv;

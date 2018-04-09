@@ -38,9 +38,9 @@
 		</ul>
 
 
-		<form class="navbar-form navbar-left" role="search">
+		<form action="searchProducts" class="navbar-form navbar-left" role="search" method="post">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search for Products">
+				<input type="text" class="form-control" name="searchitems" placeholder="Search for Products">
 
 				<button type="submit" class="btn btn-info">
 					<i class="glyphicon glyphicon-search"></i>
@@ -95,11 +95,6 @@
     
   </div>
 </nav>
-	
-	
-	
-	
-	
 	
 </body>
 </html>
